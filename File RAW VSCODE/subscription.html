@@ -6,35 +6,76 @@
     <title>Movieto - Profile</title>
     <link rel="stylesheet" href="commonstyle.css">
     <style>
-        .profile-wrapper { max-width: 600px; margin: 60px auto; padding: 20px; }
-        .profile-card {
+        .subscription-wrapper { max-width: 700px; margin: 60px auto; padding: 20px; }
+        .subscription-card {
             background-color: #13162d;
             padding: 40px;
-            border-radius: 8px;
-            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-        .avatar {
-            width: 100px;
-            height: 100px;
-            background-color: #ff0066;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
+        .subscription-card h2 {
+            margin-bottom: 10px;
+            color: #ffffff;
         }
-        .profile-details { margin-top: 20px; text-align: left; }
-        .detail-row {
+        .subscription-card p {
+            color: #a0a5c0;
+            line-height: 1.7;
+        }
+        .plan-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff0066, #ff7a99);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 999px;
+            margin: 16px 0;
+            font-weight: 700;
+        }
+        .subscription-details {
+            margin-top: 30px;
+            display: grid;
+            gap: 16px;
+        }
+        .detail-item {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #1f2347;
+            padding: 18px 22px;
+            background: #0f1228;
+            border-radius: 8px;
+            border: 1px solid #1f2347;
         }
-        .detail-label { color: #a0a5c0; }
+        .detail-item span:first-child {
+            color: #a0a5c0;
+        }
+        .detail-item span:last-child {
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .subscription-actions {
+            margin-top: 30px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .button-secondary {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            background-color: #1f2347;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .button-primary {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            background-color: #ff0066;
+            color: #ffffff;
+            text-decoration: none;
+        }
     </style>
-    <body>
-        <header class="header">
+</head>
+<body>
+    <header class="header">
         <a href="homepage.html" class="logo"><span>W</span>owo Movies</a>
         <nav class="nav">
             <a href="homepage.html" class="nav-link">Home</a>
@@ -43,6 +84,37 @@
             <a href="settings.html" class="nav-link">Settings</a>
         </nav>
     </header>
-    </body>
-</head>
+
+    <main class="subscription-wrapper">
+        <div class="subscription-card">
+            <h2>Your Subscription</h2>
+            <p>Welcome back! Berikut detail paket langganan Anda. Jika ingin memperbarui atau membatalkan paket, gunakan tombol di bawah.</p>
+            <div class="plan-badge">Premium Ultra</div>
+
+            <div class="subscription-details">
+                <div class="detail-item">
+                    <span>Member</span>
+                    <span>SawitMan67</span>
+                </div>
+                <div class="detail-item">
+                    <span>Status</span>
+                    <span style="color:#00ff88;">Active</span>
+                </div>
+                <div class="detail-item">
+                    <span>Next Billing</span>
+                    <span>25 Agustus 2026</span>
+                </div>
+                <div class="detail-item">
+                    <span>Included</span>
+                    <span>Unlimited movies, 4K streaming, no ads</span>
+                </div>
+            </div>
+
+            <div class="subscription-actions">
+                <a href="profilepage.html" class="button-secondary">Kembali ke Profile</a>
+                <a href="settings.html" class="button-primary">Kelola Langganan</a>
+            </div>
+        </div>
+    </main>
+</body>
 </html>
