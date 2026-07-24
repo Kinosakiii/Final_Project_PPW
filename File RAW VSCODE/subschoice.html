@@ -1,343 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pricing Section</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movieto - Subscription Plans</title>
+    <link rel="stylesheet" href="commonstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0b0d1b;
+            color: #ffffff;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        .pricing {
+            max-width: 1300px;
+            margin: 60px auto;
+            padding: 40px 20px 80px;
+        }
 
-<style>
+        .title {
+            text-align: center;
+            margin-bottom: 24px;
+        }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+        .title h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
 
-body{
-    background:#0f1017;
-    color:#fff;
-}
+        .title p {
+            color: #a0a5c0;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.8;
+        }
 
-.pricing{
-    max-width:1300px;
-    margin:auto;
-    padding:80px 20px;
-}
+        .switch {
+            margin: 30px auto 40px;
+            width: max-content;
+            background: #13162d;
+            padding: 6px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #1f2347;
+        }
 
-.title{
-    text-align:center;
-}
+        .switch button {
+            border: none;
+            background: none;
+            color: #a0a5c0;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 15px;
+        }
 
-.title h1{
-    font-size:48px;
-    line-height:1.2;
-    margin-bottom:20px;
-}
+        .switch .active {
+            background: #ff0066;
+            color: #fff;
+        }
 
-.title p{
-    color:#9ca3af;
-    max-width:700px;
-    margin:auto;
-    line-height:1.8;
-}
+        .badge {
+            background: #1f2347;
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 4px;
+        }
 
-/* Toggle */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
 
-.switch{
-    margin:40px auto 70px;
-    width:max-content;
-    background:#191b24;
-    padding:6px;
-    border-radius:40px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
+        .card {
+            background: #13162d;
+            border: 1px solid #1f2347;
+            border-radius: 20px;
+            padding: 30px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
 
-.switch button{
-    border:none;
-    background:none;
-    color:#999;
-    padding:12px 28px;
-    border-radius:30px;
-    cursor:pointer;
-    font-size:15px;
-}
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #ff0066;
+        }
 
-.switch .active{
-    background:#2a2d3c;
-    color:#fff;
-}
+        .card.active {
+            background: #171b34;
+            border: 2px solid #ff0066;
+            transform: scale(1.02);
+        }
 
-.badge{
-    background:#2b8cff;
-    color:#fff;
-    padding:6px 14px;
-    border-radius:20px;
-    font-size:12px;
-}
+        .plan {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* Cards */
+        .plan h3 {
+            font-size: 22px;
+            color: #ffffff;
+        }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
-}
+        .popular {
+            background: linear-gradient(135deg, #ff0066, #ff7a99);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
 
-.card{
-    background:#13141d;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:22px;
-    padding:35px;
-    transition:.3s;
-}
+        .price {
+            margin: 24px 0 12px;
+            font-size: 44px;
+            font-weight: 700;
+            color: #ffffff;
+        }
 
-.card:hover{
-    transform:translateY(-8px);
-    border-color:#5d74ff;
-}
+        .price span {
+            font-size: 15px;
+            color: #a0a5c0;
+            font-weight: 400;
+        }
 
-.card.active{
-    background:#232632;
-    border:2px solid #7a8cff;
-    transform:scale(1.03);
-}
+        .desc {
+            color: #a0a5c0;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            min-height: 72px;
+        }
 
-.plan{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
+        .btn {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            border-radius: 999px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease;
+        }
 
-.plan h3{
-    font-size:22px;
-}
+        .btn:hover {
+            transform: scale(1.02);
+        }
 
-.popular{
-    background:#2b8cff;
-    padding:5px 12px;
-    border-radius:20px;
-    font-size:12px;
-}
+        .btn-dark {
+            background: #1f2347;
+            color: #fff;
+        }
 
-.price{
-    margin:30px 0 15px;
-    font-size:52px;
-    font-weight:700;
-}
+        .btn-light {
+            background: #ff0066;
+            color: #fff;
+        }
 
-.price span{
-    font-size:16px;
-    color:#9ca3af;
-    font-weight:400;
-}
+        ul {
+            list-style: none;
+        }
 
-.desc{
-    color:#9ca3af;
-    line-height:1.7;
-    margin-bottom:30px;
-}
+        ul li {
+            margin-bottom: 14px;
+            color: #d6d9e8;
+        }
 
-.btn{
-    width:100%;
-    border:none;
-    padding:18px;
-    border-radius:40px;
-    font-size:17px;
-    cursor:pointer;
-    font-weight:600;
-    margin-bottom:35px;
-    transition:.3s;
-}
+        ul li::before {
+            content: "✓";
+            margin-right: 10px;
+            color: #ff0066;
+        }
 
-.btn-dark{
-    background:#353847;
-    color:#fff;
-}
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 16px;
+                padding: 20px;
+            }
 
-.btn-light{
-    background:#fff;
-    color:#111;
-}
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
 
-.btn:hover{
-    transform:scale(1.03);
-}
+            .title h1 {
+                font-size: 32px;
+            }
 
-ul{
-    list-style:none;
-}
-
-ul li{
-    margin-bottom:18px;
-    color:#d7d7d7;
-}
-
-ul li::before{
-    content:"✓";
-    margin-right:10px;
-    color:#fff;
-}
-
-@media(max-width:768px){
-
-.title h1{
-    font-size:34px;
-}
-
-.price{
-    font-size:42px;
-}
-
-}
-
-</style>
-
+            .price {
+                font-size: 36px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header class="header">
+        <a href="homepage.html" class="logo"><span>W</span>owo Movies</a>
+        <nav class="nav">
+            <a href="homepage.html" class="nav-link">Home</a>
+            <a href="moviepage.html" class="nav-link">Movies</a>
+            <a href="profilepage.html" class="nav-link">Profile</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+            <a href="subscription.html" class="nav-link">Subscription</a>
+        </nav>
+    </header>
 
-<section class="pricing">
-
-<div class="title">
-    <h1>Start Your Content Creation<br>Journey with AI</h1>
-
-    <p>
-        Unlock the Potential of Innovation, Discover the Advanced AI Tools
-        Transforming Your Ideas into Reality with Unmatched Precision and
-        Intelligence.
-    </p>
-</div>
-
-<div class="switch">
-    <button class="active">Monthly</button>
-    <button>Annually</button>
-    <span class="badge">Save 25%</span>
-</div>
-
-<div class="cards">
-
-    <!-- Free -->
-
-    <div class="card">
-
-        <div class="plan">
-            <h3>Free</h3>
+    <section class="pricing">
+        <div class="title">
+            <h1>Pilih Paket Langganan Favoritmu</h1>
+            <p>
+                Nikmati pengalaman menonton yang lebih seru dengan paket yang sesuai kebutuhanmu.
+                Pilih opsi terbaik untuk hiburan tanpa batas.
+            </p>
         </div>
 
-        <div class="price">
-            $0 <span>Per month</span>
+        <div class="switch">
+            <button class="active">Bulanan</button>
+            <button>Tahunan</button>
+            <span class="badge">Hemat 25%</span>
         </div>
 
-        <p class="desc">
-            Sed ut perspiciatis unde omnis iste natus ut perspiciatis.
-        </p>
+        <div class="cards">
+            <div class="card">
+                <div class="plan">
+                    <h3>Basic</h3>
+                </div>
+                <div class="price">$1 <span>per month</span></div>
+                <p class="desc">Cocok untuk menonton film favorit dengan fitur dasar dan akses nyaman.</p>
+                <button class="btn btn-dark">Pilih Paket</button>
+                <ul>
+                    <li>Streaming standar</li>
+                    <li>Film pilihan terbatas</li>
+                    <li>Tanpa iklan</li>
+                </ul>
+            </div>
 
-        <button class="btn btn-dark">Try it for Free</button>
+            <div class="card active">
+                <div class="plan">
+                    <h3>Standard</h3>
+                    <span class="popular">Popular</span>
+                </div>
+                <div class="price">$2 <span>per month</span></div>
+                <p class="desc">Pilihan terbaik untuk pengalaman menonton yang lebih lengkap dan lebih lancar.</p>
+                <button class="btn btn-light">Pilih Paket</button>
+                <ul>
+                    <li>Semua fitur Basic</li>
+                    <li>Kualitas lebih tinggi</li>
+                    <li>Akses lebih banyak konten</li>
+                </ul>
+            </div>
 
-        <ul>
-            <li>Some limited features only</li>
-            <li>400 messaging limits</li>
-            <li>Limited Projects</li>
-            <li>20,000 Words</li>
-        </ul>
-
-    </div>
-
-    <!-- Plus -->
-
-    <div class="card active">
-
-        <div class="plan">
-            <h3>Plus plan</h3>
-            <span class="popular">Popular</span>
+            <div class="card">
+                <div class="plan">
+                    <h3>Premium</h3>
+                </div>
+                <div class="price">$3 <span>per month</span></div>
+                <p class="desc">Paket penuh untuk kualitas terbaik, fitur premium, dan hiburan tanpa batas.</p>
+                <button class="btn btn-dark">Pilih Paket</button>
+                <ul>
+                    <li>Semua fitur Standard</li>
+                    <li>4K streaming</li>
+                    <li>Download dan akses prioritas</li>
+                </ul>
+            </div>
         </div>
-
-        <div class="price">
-            $20 <span>Per month</span>
-        </div>
-
-        <p class="desc">
-            Sed ut perspiciatis unde omnis iste natus ut perspiciatis.
-        </p>
-
-        <button class="btn btn-light">Purchase Now</button>
-
-        <ul>
-            <li>Everything in Free</li>
-            <li>2000 messaging limits</li>
-            <li>Unlimited Projects</li>
-            <li>Open AI Key Integration</li>
-            <li>80,000 Words</li>
-            <li>Consistent support</li>
-        </ul>
-
-    </div>
-
-    <!-- Pro -->
-
-    <div class="card">
-
-        <div class="plan">
-            <h3>Pro plan</h3>
-        </div>
-
-        <div class="price">
-            $30 <span>Per month</span>
-        </div>
-
-        <p class="desc">
-            Sed ut perspiciatis unde omnis iste natus ut perspiciatis.
-        </p>
-
-        <button class="btn btn-dark">Purchase Now</button>
-
-        <ul>
-            <li>Everything in Free</li>
-            <li>5000 messaging limits</li>
-            <li>Unlimited Projects</li>
-            <li>Open AI Key Integration</li>
-            <li>100,000 Words</li>
-            <li>Consistent support</li>
-        </ul>
-
-    </div>
-
-    <!-- Enterprise -->
-
-    <div class="card">
-
-        <div class="plan">
-            <h3>Enterprise</h3>
-        </div>
-
-        <div class="price" style="font-size:42px;">
-            Let's talk
-        </div>
-
-        <p class="desc">
-            Sed ut perspiciatis unde omnis iste natus ut perspiciatis.
-        </p>
-
-        <button class="btn btn-dark">Contact Sales</button>
-
-        <ul>
-            <li>Everything in Free</li>
-            <li>5000 messaging limits</li>
-            <li>Unlimited Projects</li>
-            <li>Open AI Key Integration</li>
-            <li>Unlimited Words</li>
-            <li>Consistent support</li>
-        </ul>
-
-    </div>
-
-</div>
-
-</section>
-
+    </section>
 </body>
 </html>
