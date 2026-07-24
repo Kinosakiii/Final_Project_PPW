@@ -18,6 +18,7 @@
             border-radius: 6px;
             overflow: hidden;
             transition: transform 0.2s;
+            position: relative;
         }
         .movie-card:hover { transform: scale(1.04); }
         
@@ -28,6 +29,46 @@
             object-fit: cover; /* Prevents distortion, crops nicely */
             background-color: #23274a; /* Fallback color while loading */
             display: block;
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .video-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            z-index: 1000;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .video-modal iframe {
+            width: min(1000px, 92vw);
+            height: min(560px, 72vh);
+            border: 0;
+            border-radius: 16px;
+            background: #000;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 0;
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
         }
         
         .movie-info { padding: 15px; }
@@ -193,6 +234,47 @@
             </div>
         </div>
     </div>
+
+    <div id="videoModal" class="video-modal" aria-hidden="true">
+        <button id="closeVideoModal" class="close-btn" aria-label="Close video">×</button>
+        <iframe id="youtubePlayer" src="https://www.youtube.com/embed/XGxIE1hr0w4?autoplay=1&mute=1&controls=1" title="Movie trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const modal = document.getElementById('videoModal');
+        const closeBtn = document.getElementById('closeVideoModal');
+        const player = document.getElementById('youtubePlayer');
+        const posters = document.querySelectorAll('.movie-poster');
+
+        function openTrailer() {
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeTrailer() {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            player.src = 'https://www.youtube.com/embed/XGxIE1hr0w4?autoplay=0&mute=1&controls=1';
+        }
+
+        posters.forEach((poster) => {
+            poster.addEventListener('click', openTrailer);
+        });
+
+        closeBtn.addEventListener('click', closeTrailer);
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeTrailer();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeTrailer();
+            }
+        });
+    </script>
 
 </body>
 </html>
