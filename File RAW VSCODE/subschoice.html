@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing Section</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0f1017;
+    color:#fff;
+}
+
+.pricing{
+    max-width:1300px;
+    margin:auto;
+    padding:80px 20px;
+}
+
+.title{
+    text-align:center;
+}
+
+.title h1{
+    font-size:48px;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.title p{
+    color:#9ca3af;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* Toggle */
+
+.switch{
+    margin:40px auto 70px;
+    width:max-content;
+    background:#191b24;
+    padding:6px;
+    border-radius:40px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.switch button{
+    border:none;
+    background:none;
+    color:#999;
+    padding:12px 28px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.switch .active{
+    background:#2a2d3c;
+    color:#fff;
+}
+
+.badge{
+    background:#2b8cff;
+    color:#fff;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+/* Cards */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#13141d;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+    padding:35px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#5d74ff;
+}
+
+.card.active{
+    background:#232632;
+    border:2px solid #7a8cff;
+    transform:scale(1.03);
+}
+
+.plan{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.plan h3{
+    font-size:22px;
+}
+
+.popular{
+    background:#2b8cff;
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+.price{
+    margin:30px 0 15px;
+    font-size:52px;
+    font-weight:700;
+}
+
+.price span{
+    font-size:16px;
+    color:#9ca3af;
+    font-weight:400;
+}
+
+.desc{
+    color:#9ca3af;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.btn{
+    width:100%;
+    border:none;
+    padding:18px;
+    border-radius:40px;
+    font-size:17px;
+    cursor:pointer;
+    font-weight:600;
+    margin-bottom:35px;
+    transition:.3s;
+}
+
+.btn-dark{
+    background:#353847;
+    color:#fff;
+}
+
+.btn-light{
+    background:#fff;
+    color:#111;
+}
+
+.btn:hover{
+    transform:scale(1.03);
+}
+
+ul{
+    list-style:none;
+}
+
+ul li{
+    margin-bottom:18px;
+    color:#d7d7d7;
+}
+
+ul li::before{
+    content:"✓";
+    margin-right:10px;
+    color:#fff;
+}
+
+@media(max-width:768px){
+
+.title h1{
+    font-size:34px;
+}
+
+.price{
+    font-size:42px;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<section class="pricing">
+
+<div class="title">
+    <h1>Start Your Content Creation<br>Journey with AI</h1>
+
+    <p>
+        Unlock the Potential of Innovation, Discover the Advanced AI Tools
+        Transforming Your Ideas into Reality with Unmatched Precision and
+        Intelligence.
+    </p>
+</div>
+
+<div class="switch">
+    <button class="active">Monthly</button>
+    <button>Annually</button>
+    <span class="badge">Save 25%</span>
+</div>
+
+<div class="cards">
+
+    <!-- Free -->
+
+    <div class="card">
+
+        <div class="plan">
+            <h3>Free</h3>
+        </div>
+
+        <div class="price">
+            $0 <span>Per month</span>
+        </div>
+
+        <p class="desc">
+            Sed ut perspiciatis unde omnis iste natus ut perspiciatis.
+        </p>
+
+        <button class="btn btn-dark">Try it for Free</button>
+
+        <ul>
+            <li>Some limited features only</li>
+            <li>400 messaging limits</li>
+            <li>Limited Projects</li>
+            <li>20,000 Words</li>
+        </ul>
+
+    </div>
+
+    <!-- Plus -->
+
+    <div class="card active">
+
+        <div class="plan">
+            <h3>Plus plan</h3>
+            <span class="popular">Popular</span>
+        </div>
+
+        <div class="price">
+            $20 <span>Per month</span>
+        </div>
+
+        <p class="desc">
+            Sed ut perspiciatis unde omnis iste natus ut perspiciatis.
+        </p>
+
+        <button class="btn btn-light">Purchase Now</button>
+
+        <ul>
+            <li>Everything in Free</li>
+            <li>2000 messaging limits</li>
+            <li>Unlimited Projects</li>
+            <li>Open AI Key Integration</li>
+            <li>80,000 Words</li>
+            <li>Consistent support</li>
+        </ul>
+
+    </div>
+
+    <!-- Pro -->
+
+    <div class="card">
+
+        <div class="plan">
+            <h3>Pro plan</h3>
+        </div>
+
+        <div class="price">
+            $30 <span>Per month</span>
+        </div>
+
+        <p class="desc">
+            Sed ut perspiciatis unde omnis iste natus ut perspiciatis.
+        </p>
+
+        <button class="btn btn-dark">Purchase Now</button>
+
+        <ul>
+            <li>Everything in Free</li>
+            <li>5000 messaging limits</li>
+            <li>Unlimited Projects</li>
+            <li>Open AI Key Integration</li>
+            <li>100,000 Words</li>
+            <li>Consistent support</li>
+        </ul>
+
+    </div>
+
+    <!-- Enterprise -->
+
+    <div class="card">
+
+        <div class="plan">
+            <h3>Enterprise</h3>
+        </div>
+
+        <div class="price" style="font-size:42px;">
+            Let's talk
+        </div>
+
+        <p class="desc">
+            Sed ut perspiciatis unde omnis iste natus ut perspiciatis.
+        </p>
+
+        <button class="btn btn-dark">Contact Sales</button>
+
+        <ul>
+            <li>Everything in Free</li>
+            <li>5000 messaging limits</li>
+            <li>Unlimited Projects</li>
+            <li>Open AI Key Integration</li>
+            <li>Unlimited Words</li>
+            <li>Consistent support</li>
+        </ul>
+
+    </div>
+
+</div>
+
+</section>
+
+</body>
+</html>
