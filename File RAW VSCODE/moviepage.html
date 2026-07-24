@@ -6,6 +6,169 @@
     <title>Wowo Movies - Movies Catalog</title>
     <link rel="stylesheet" href="commonstyle.css">
     <style>
+        /* Carousel Styles */
+        .hero-carousel {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            background-color: #0b0d1b;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to right,
+                rgba(11, 13, 27, 0.92) 0%,
+                rgba(11, 13, 27, 0.6) 50%,
+                rgba(11, 13, 27, 0.3) 100%
+            );
+            z-index: 1; 
+        }
+
+        .carousel-content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+            padding: 0 60px;
+            text-align: left;
+            align-self: center;
+            margin-right: auto;
+            margin-left: 80px;
+        }
+
+        .carousel-content .badge {
+            display: inline-block;
+            background-color: #ff0066;
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .carousel-content h2 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.15;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .carousel-content p {
+            font-size: 16px;
+            color: #c0c5e0;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .carousel-btn {
+            display: inline-block;
+            padding: 14px 36px;
+            background-color: #ff0066;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .carousel-btn:hover {
+            background-color: #cc0052;
+            transform: translateY(-2px);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            backdrop-filter: blur(8px);
+            transition: background 0.3s, border-color 0.3s;
+            user-select: none; 
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .carousel-arrow.prev { left: 20px; }
+        .carousel-arrow.next { right: 20px; }  
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-dots .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .carousel-dots .dot.active {
+            background: #ff0066;
+            transform: scale(1.25);
+        }
+
+        .carousel-dots .dot:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Catalog Layout Styles */
         .catalog-container { padding: 40px 50px; }
         .grid-container {
             display: grid;
@@ -13,6 +176,7 @@
             gap: 25px;
             margin-top: 25px;
         }
+
         .movie-card {
             background-color: #13162d;
             border-radius: 6px;
@@ -22,12 +186,11 @@
         }
         .movie-card:hover { transform: scale(1.04); }
         
-        /* New & Updated Image Styling */
         .movie-poster {
             width: 100%;
             height: 280px;
-            object-fit: cover; /* Prevents distortion, crops nicely */
-            background-color: #23274a; /* Fallback color while loading */
+            object-fit: cover;
+            background-color: #23274a;
             display: block;
             position: relative;
             z-index: 1;
@@ -74,6 +237,17 @@
         .movie-info { padding: 15px; }
         .movie-title { font-weight: bold; font-size: 16px; margin-bottom: 5px; }
         .movie-meta { font-size: 13px; color: #a0a5c0; }
+
+        @media (max-width: 768px) {
+            .hero-carousel { height: 380px; }
+            .carousel-content { margin-left: 30px; padding: 0 30px; }
+            .carousel-content h2 { font-size: 28px; }
+            .carousel-content p { font-size: 14px; }
+            .carousel-arrow { width: 38px; height: 38px; font-size: 16px; }
+            .carousel-arrow.prev { left: 10px; }
+            .carousel-arrow.next { right: 10px; }
+            .catalog-container { padding: 25px 20px; }
+        }
     </style>
 </head>
 <body>
@@ -88,6 +262,90 @@
         </nav>
     </header>
 
+    <!-- Hero Carousel Section -->
+    <div class="hero-carousel" id="heroCarousel">
+        <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide">
+                <img src="../WEBP/wednesday.webp" alt="Wednesday">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-content">
+                    <span class="badge">Trending Now</span>
+                    <h2>Wednesday</h2>
+                    <p>Follow Wednesday Addams' years as a student at Nevermore Academy as she attempts to master her emerging psychic ability, thwart a killing spree, and solve the mystery that embroiled her parents.</p>
+                    <a href="#" class="carousel-btn">▶ Watch Now</a>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <img src="../WEBP/johnwick.webp" alt="John Wick">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-content">
+                    <span class="badge">Action Hit</span>
+                    <h2>John Wick</h2>
+                    <p>An ex-hit-man comes out of retirement to track down the gangsters that killed his dog and took everything he had. A relentless journey of vengeance begins.</p>
+                    <a href="#" class="carousel-btn">▶ Watch Now</a>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <img src="../WEBP/digitalcircus.webp" alt="The Amazing Digital Circus">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-content">
+                    <span class="badge">New Release</span>
+                    <h2>The Amazing Digital Circus</h2>
+                    <p>A woman finds herself trapped in a bizarre virtual reality circus alongside other humans trapped in the game. Together they must navigate the insanity.</p>
+                    <a href="#" class="carousel-btn">▶ Watch Now</a>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <img src="../WEBP/fnaf3.webp" alt="Five Nights At Freddy's 3">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-content">
+                    <span class="badge">Horror Classic</span>
+                    <h2>Five Nights At Freddy's 3</h2>
+                    <p>Set thirty years after the original Freddy Fazbear's Pizza closing, a new horror attraction opens based on the legendary unsolved disappearances.</p>
+                    <a href="#" class="carousel-btn">▶ Watch Now</a>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <img src="../WEBP/helloneighbor.webp" alt="Hello Neighbor">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-content">
+                    <span class="badge">Mystery Thriller</span>
+                    <h2>Hello Neighbor</h2>
+                    <p>A young boy suspects his mysterious neighbor is hiding a dark secret in his basement. He must sneak into the neighbor's house to uncover the truth.</p>
+                    <a href="#" class="carousel-btn">▶ Watch Now</a>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <img src="../WEBP/fnaf4.webp" alt="Five Nights At Freddy's 4">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-content">
+                    <span class="badge">Horror Drama</span>
+                    <h2>Five Nights At Freddy's 4</h2>
+                    <p>The final chapter in the nightmare unfolds as a troubled child confronts a terrifying truth hidden behind the walls of a once-familiar place.</p>
+                    <a href="#" class="carousel-btn">▶ Watch Now</a>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-arrow prev" id="prevBtn">&#10094;</button>
+        <button class="carousel-arrow next" id="nextBtn">&#10095;</button>
+
+        <div class="carousel-dots" id="carouselDots">
+            <button class="dot active" data-index="0"></button>
+            <button class="dot" data-index="1"></button>
+            <button class="dot" data-index="2"></button>
+            <button class="dot" data-index="3"></button>
+            <button class="dot" data-index="4"></button>
+            <button class="dot" data-index="5"></button>
+        </div>
+    </div>
+
+    <!-- Catalog Section -->
     <div class="catalog-container">
         <h2>Trending Now</h2>
         <div class="grid-container">
@@ -138,6 +396,7 @@
                     <div class="movie-meta">2h 15m • Horror Drama </div>
                 </div>
             </div>
+
             <div class="movie-card">
                 <img src="../WEBP/wednesday.webp" class="movie-poster">
                 <div class="movie-info">
@@ -185,6 +444,7 @@
                     <div class="movie-meta">2h 15m • Horror Drama </div>
                 </div>
             </div>
+
             <div class="movie-card">
                 <img src="../WEBP/wednesday.webp" class="movie-poster">
                 <div class="movie-info">
@@ -235,12 +495,100 @@
         </div>
     </div>
 
+    <!-- Video Modal -->
     <div id="videoModal" class="video-modal" aria-hidden="true">
         <button id="closeVideoModal" class="close-btn" aria-label="Close video">×</button>
         <iframe id="youtubePlayer" src="https://www.youtube.com/embed/XGxIE1hr0w4?autoplay=1&mute=1&controls=1" title="Movie trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 
+    <!-- Scripts -->
     <script>
+        /* Carousel Logic */
+        (function() {
+            const track = document.getElementById('carouselTrack');
+            const slides = track.querySelectorAll('.carousel-slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dots = document.querySelectorAll('.dot');
+            const carousel = document.getElementById('heroCarousel');
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            let autoPlayInterval; 
+            const AUTO_PLAY_DELAY = 4000;
+
+            function goToSlide(index) {
+                if (index < 0) index = totalSlides - 1; 
+                if (index >= totalSlides) index = 0;
+
+                currentIndex = index;
+                const offset = -currentIndex * 100;
+                track.style.transform = `translateX(${offset}%)`;
+
+                dots.forEach(function(dot, i) {
+                    if (i === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                goToSlide(currentIndex + 1);
+            }
+
+            function prevSlide() {
+                goToSlide(currentIndex - 1);
+            }
+
+            function startAutoPlay() {
+                stopAutoPlay();
+                autoPlayInterval = setInterval(nextSlide, AUTO_PLAY_DELAY);
+            }
+
+            function stopAutoPlay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = null;
+                }
+            }
+
+            nextBtn.addEventListener('click', function() {
+                nextSlide();
+                startAutoPlay();
+            });
+
+            prevBtn.addEventListener('click', function() {
+                prevSlide();
+                startAutoPlay();
+            });
+
+            dots.forEach(function(dot) {
+                dot.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    goToSlide(index);
+                    startAutoPlay();
+                });
+            });
+
+            carousel.addEventListener('mouseenter', stopAutoPlay);
+            carousel.addEventListener('mouseleave', startAutoPlay);
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    startAutoPlay();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    startAutoPlay();
+                }
+            });
+
+            startAutoPlay();
+        })(); 
+
+        /* Trailer Modal Logic */
         const modal = document.getElementById('videoModal');
         const closeBtn = document.getElementById('closeVideoModal');
         const player = document.getElementById('youtubePlayer');
@@ -275,6 +623,5 @@
             }
         });
     </script>
-
 </body>
 </html>
