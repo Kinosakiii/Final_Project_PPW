@@ -1,0 +1,20 @@
+/* Background styling for home and main pages */
+.dynamic-bg {
+    background: linear-gradient(135deg, #13162d 0%, #0b0d1b 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Visual blur effect circle in the background corner */
+.dynamic-bg::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 0, 102, 0.15);
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+}

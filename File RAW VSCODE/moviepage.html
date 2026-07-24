@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wowo Movies - Movies Catalog</title>
+    <link rel="stylesheet" href="commonstyle.css">
+    <style>
+        .catalog-container { padding: 40px 50px; }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        .movie-card {
+            background-color: #13162d;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .movie-card:hover { transform: scale(1.04); }
+        
+        /* New & Updated Image Styling */
+        .movie-poster {
+            width: 100%;
+            height: 280px;
+            object-fit: cover; /* Prevents distortion, crops nicely */
+            background-color: #23274a; /* Fallback color while loading */
+            display: block;
+        }
+        
+        .movie-info { padding: 15px; }
+        .movie-title { font-weight: bold; font-size: 16px; margin-bottom: 5px; }
+        .movie-meta { font-size: 13px; color: #a0a5c0; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="homepage.html" class="logo"><span>W</span>owo Movies</a>
+        <nav class="nav">
+            <a href="homepage.html" class="nav-link">Home</a>
+            <a href="moviepage.html" class="nav-link active">Movies</a>
+            <a href="profilepage.html" class="nav-link">Profile</a>
+            <a href="settings.html" class="nav-link">Settings</a>
+        </nav>
+    </header>
+
+    <div class="catalog-container">
+        <h2>Trending Now</h2>
+        <div class="grid-container">
+            <div class="movie-card">
+                <img src="../WEBP/wednesday.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">Wednesday</div>
+                    <div class="movie-meta">Season 1 • Horror Comedy</div>
+                </div>
+            </div>
+         
+            <div class="movie-card">
+                <img src="../WEBP/digitalcircus.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">The Amazing Digital Circus</div>
+                    <div class="movie-meta">Season 4 • Thriller</div>
+                </div>
+            </div>
+      
+            <div class="movie-card">
+                <img src="../WEBP/johnwick.webp" alt="John Wick Poster" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">John Wick</div>
+                    <div class="movie-meta">2h 10m • Action</div>
+                </div>
+            </div>
+            
+            <div class="movie-card">
+                <img src="../WEBP/fnaf3.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">Five Nights At Freddy's 3</div>
+                    <div class="movie-meta">1h 33m • Supernatural</div>
+                </div>
+            </div>
+ 
+            <div class="movie-card">
+                <img src="../WEBP/helloneighbor.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">Hello Neighbor</div>
+                    <div class="movie-meta">2h • Horror Drama</div>
+                </div>
+            </div>
+           
+            <div class="movie-card">
+                <img src="../WEBP/fnaf4.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">Five Nights At Freddy's 4</div>
+                    <div class="movie-meta">2h 15m • Horror Drama </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <img src="../WEBP/wednesday.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">Wednesday</div>
+                    <div class="movie-meta">Season 1 • Horror Comedy</div>
+                </div>
+            </div>
+    
+            <div class="movie-card">
+                <img src="../WEBP/digitalcircus.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">The Amazing Digital Circus</div>
+                    <div class="movie-meta">Season 4 • Thriller</div>
+                </div>
+            </div>
+          
+            <div class="movie-card">
+                <img src="../WEBP/johnwick.webp" alt="John Wick Poster" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">John Wick</div>
+                    <div class="movie-meta">2h 10m • Action</div>
+                </div>
+            </div>
+    
+            <div class="movie-card">
+                <img src="../WEBP/fnaf3.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">Five Nights At Freddy's 3</div>
+                    <div class="movie-meta">1h 33m • Supernatural</div>
+                </div>
+            </div>
+      
+            <div class="movie-card">
+                <img src="../WEBP/helloneighbor.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">Hello Neighbor</div>
+                    <div class="movie-meta">2h • Horror Drama</div>
+                </div>
+            </div>
+        
+            <div class="movie-card">
+                <img src="../WEBP/fnaf4.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">Five Nights At Freddy's 4</div>
+                    <div class="movie-meta">2h 15m • Horror Drama </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <img src="../WEBP/wednesday.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">Wednesday</div>
+                    <div class="movie-meta">Season 1 • Horror Comedy</div>
+                </div>
+            </div>
+           
+            <div class="movie-card">
+                <img src="../WEBP/digitalcircus.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">The Amazing Digital Circus</div>
+                    <div class="movie-meta">Season 4 • Thriller</div>
+                </div>
+            </div>
+       
+            <div class="movie-card">
+                <img src="../WEBP/johnwick.webp" alt="John Wick Poster" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">John Wick</div>
+                    <div class="movie-meta">2h 10m • Action</div>
+                </div>
+            </div>
+    
+            <div class="movie-card">
+                <img src="../WEBP/fnaf3.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">Five Nights At Freddy's 3</div>
+                    <div class="movie-meta">1h 33m • Supernatural</div>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="../WEBP/helloneighbor.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">Hello Neighbor</div>
+                    <div class="movie-meta">2h • Horror Drama</div>
+                </div>
+            </div>
+    
+            <div class="movie-card">
+                <img src="../WEBP/fnaf4.webp" class="movie-poster">
+                <div class="movie-info">
+                    <div class="movie-title">Five Nights At Freddy's 4</div>
+                    <div class="movie-meta">2h 15m • Horror Drama </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

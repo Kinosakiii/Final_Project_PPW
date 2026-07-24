@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wowo Movies - Settings</title>
+    <link rel="stylesheet" href="commonstyle.css">
+    <style>
+        .settings-container {
+            max-width: 700px;
+            margin: 5px auto;
+            padding: 40px 20px;
+        }
+
+        .setting-box {
+            background-color: #13162d;
+            padding: 25px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .setting-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #1f2347;
+        }
+
+        .option-desc p {
+            font-size: 13px;
+            color: #a0a5c0;
+            margin-top: 4px;
+        }
+
+        .toggle-btn {
+            background-color: #ff0066;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="homepage.html" class="logo"><span>W</span>owo Movies</a>
+        <nav class="nav">
+            <a href="homepage.html" class="nav-link">Home</a>
+            <a href="moviepage.html" class="nav-link">Movies</a>
+            <a href="profilepage.html" class="nav-link">Profile</a>
+            <a href="settings.html" class="nav-link active">Settings</a>
+        </nav>
+    </header>
+
+    <div class="settings-container">
+        <h2>Account Settings</h2>
+
+        <div class="setting-box">
+            <h3>Preferences</h3>
+            <div class="setting-option">
+                <div class="option-desc">
+                    <h4>Autoplay Next Episode</h4>
+                    <p>Automatically play the next sequence in a series entry.</p>
+                </div>
+                <button class="toggle-btn toggle-state-btn" style="background-color:#2d3366;"
+                    data-enabled="false">Disabled</button>
+            </div>
+
+            <div class="setting-option">
+                <div class="option-desc">
+                    <h4>High Quality Streaming</h4>
+                    <p>Force video resolution delivery metrics to 4K UHD when available.</p>
+                </div>
+                <button class="toggle-btn toggle-state-btn" data-enabled="true">Enabled</button>
+            </div>
+
+            <div class="setting-option">
+                <div class="option-desc">
+                    <h4>Enable Family Mode</h4>
+                    <p>Hides Explicit content movies. </p>
+                </div>
+                <button class="toggle-btn toggle-state-btn" style="background-color:#2d3366;"
+                    data-enabled="false">Disabled</button>
+            </div>
+        </div>
+
+
+        <div class="setting-box" style="border: 1px solid #ff005533;">
+            <h3 style="color:#ff4444;">Danger Zone</h3>
+            <div class="setting-option">
+                <div class="option-desc">
+                    <h4>Cancel Subscription</h4>
+                    <p>Lose catalog streaming permissions at the conclusion of billing period cycle.</p>
+                </div>
+                <button class="toggle-btn" style="background-color: #cc0000;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.toggle-state-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const isEnabled = this.getAttribute('data-enabled') === 'true';
+
+                if (isEnabled) {
+                    this.textContent = 'Disabled';
+                    this.style.backgroundColor = '#2d3366';
+                    this.setAttribute('data-enabled', 'false');
+                } else {
+                    this.textContent = 'Enabled';
+                    this.style.backgroundColor = '#ff0066';
+                    this.setAttribute('data-enabled', 'true');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
